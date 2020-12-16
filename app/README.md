@@ -21,3 +21,19 @@ then edit and delete that user
 
 7. Perform all the checks at the appropriate times and send alerts to the users when a check
 changes. 
+
+## Config file
+
+To select the environments that are available within the configuration file, it is necessary in the terminal to enter the following command:
+
+### Linux/MacOS
+
+```
+$> NODE_ENV=<envName> node index.js
+```
+
+### Windows
+
+```
+
+```

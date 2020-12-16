@@ -13,6 +13,8 @@ const http = require('http');
 const { parse } = require('path');
 const url = require('url');
 var StringDecoder = require('string_decoder').StringDecoder;
+/** Use the config file */
+var config = require('./config');
 
 /** The server should respond all request **/
 const server = http.createServer((req, res)=>{
@@ -86,12 +88,11 @@ const server = http.createServer((req, res)=>{
 });
 
 /** 
- * Start the server in port 3000 
- * You can see the result using:
- * curl localhost:3000
+ * Use the config file to access the port
+ * and the env name
  **/
-server.listen(3000, () => {
-    console.log("Server is now listening :) ");
+server.listen(config.port, () => {
+    console.log("Server is now listening in " +config.port+ " in " +config.envName+ " mode :)");
 });
 
 /** Define the samples **/
