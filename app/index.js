@@ -124,19 +124,25 @@ var unifiedServer = (req, res) => {
 /** Define the samples **/
 var handlers = {};
 
-/** Sample handler **/
-handlers.sample = (data, callback) => {
-    /** Callback HTTP status code **/
-    callback(406, {'name' : 'Sample handler'});
-    /** Payload as an objet **/
+// /** Sample handler **/
+// handlers.sample = (data, callback) => {
+//     /** Callback HTTP status code **/
+//     callback(406, {'name' : 'Sample handler'});
+//     /** Payload as an objet **/
+// };
+
+/** Create a ping handler */
+handlers.ping = (data, callback) => {
+    callback(200);
 };
 
 /** Not found handler **/
 handlers.notFound = (data, callback) => {
+    /** Callback http status code */
     callback(404);
 };
 
 /** Routing Requests **/
 var router = {
-    'sample' : handlers.sample
+    'ping' : handlers.ping
 }
