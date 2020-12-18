@@ -40,5 +40,34 @@ $> NODE_ENV=<envName> node index.js
 ```
 $> openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 ```
+## Storing data
 
-## Service I: /ping
+The librarie is in the ``` lib ``` folder. 
+CRUD to do into a file:
+
+```
+/** Require the data module */
+var _data = require('./lib/data');
+
+/** Write */
+_data.create('test', 'newFile', {'foo':'bar'}, (err)=>{
+    console.log('This is the error: ', err);
+})
+
+/** Read */
+_data.read('test', 'newFile', (err, data)=>{
+    console.log('This is the error: ', err);
+    console.log('This is the data: ', data);
+})
+
+/** Update */
+_data.update('test', 'newFile', {'fizz' : 'buzz'}, (err)=>{
+    console.log('This is the error: ', err);
+})
+
+/** Delete */
+_data.delete('test', 'newFile', (err)=>{
+    console.log('This is the error: ', err);
+})
+
+```
