@@ -9,14 +9,16 @@ var env = {};
 env.staging = {
     'httpPort' : 3000,
     'httpsPort' : 30001,
-    'envName' : 'staging'
+    'envName' : 'staging',
+    'hashingSecret' : 'thisIsASecret'
 };
 
 /** Production env */
 env.production = {
     'httpPort' : 5000,
     'httpsPort' : 5001,
-    'envName' : 'production'
+    'envName' : 'production',
+    'hashingSecret' : 'thisIsAlsoASecret'
 };
 
 /** Determine wich env was passed as a command-line */
