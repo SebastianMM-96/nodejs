@@ -5,6 +5,7 @@ const { dir } = require('console');
 var fs = require('fs');
 var path = require('path');
 const { hasUncaughtExceptionCaptureCallback } = require('process');
+const helpers = require('./helpers');
 
 /** Create a container for the module */
 var lib = {};
@@ -46,7 +47,12 @@ lib.create = (dir, file, data, callback) => {
 /** Read data from file */
 lib.read = (dir, file, callback)=>{
     fs.readFile(lib.baseDir + dir + '/' + file + '.json', 'utf8', (err, data)=>{
-        callback(err, data);
+        if(!err && data){
+            var parsedData = helpers.parseJsonToObject(data);
+            callback(false, parsedData);
+        }else{
+            callback(err, data);
+        }
     });
 };
 

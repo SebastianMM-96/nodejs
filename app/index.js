@@ -16,8 +16,11 @@ const { parse } = require('path');
 const url = require('url');
 var StringDecoder = require('string_decoder').StringDecoder;
 /** Use the config file */
-var config = require('./config');
+var config = require('./lib/config');
 var fs = require('fs');
+/** Require the handlers */
+var handlers = require('./lib/handlers');
+var helpers = require('./lib/helpers');
 
 /** Instantiate the http server */
 const httpServer = http.createServer((req, res)=>{
@@ -94,7 +97,7 @@ var unifiedServer = (req, res) => {
             'queryStringObj' : queryStringObj,
             'method' : method,
             'headers' : headers,
-            'payload' : buffer
+            'payload' : helpers.parseJsonToObject(buffer)
         };
 
         /** Route the request to the handler specified in the router **/
@@ -121,28 +124,8 @@ var unifiedServer = (req, res) => {
     });
 }
 
-/** Define the samples **/
-var handlers = {};
-
-// /** Sample handler **/
-// handlers.sample = (data, callback) => {
-//     /** Callback HTTP status code **/
-//     callback(406, {'name' : 'Sample handler'});
-//     /** Payload as an objet **/
-// };
-
-/** Create a ping handler */
-handlers.ping = (data, callback) => {
-    callback(200);
-};
-
-/** Not found handler **/
-handlers.notFound = (data, callback) => {
-    /** Callback http status code */
-    callback(404);
-};
-
 /** Routing Requests **/
 var router = {
-    'ping' : handlers.ping
+    'ping' : handlers.ping,
+    'users' : handlers.users
 }
