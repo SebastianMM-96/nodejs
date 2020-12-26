@@ -71,3 +71,7 @@ _data.delete('test', 'newFile', (err)=>{
 })
 
 ```
+
+## Tokens 
+
+authentication mechanism to verify a user's sessions. The tokens were created from the id and password of an existing user.

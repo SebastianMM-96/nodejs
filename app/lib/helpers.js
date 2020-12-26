@@ -32,6 +32,26 @@ helpers.parseJsonToObject = (str)=>{
     }
 }
 
+/** Random string function */
+helpers.createRandomString = (strLength)=>{
+    strLength = typeof(strLength) == 'number' && strLength > 0 ? strLength : false;
+    if(strLength){
+        //Define all the char into string
+        var possibleChar = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        var str = '';
+
+        for(i=1; i <= strLength; i++){
+            //random char
+            var randomChar = possibleChar.charAt(Math.floor(Math.random() * possibleChar.length));
+            //append 
+            str += randomChar;
+        }
+
+        return str;
+    }else{
+        return false;
+    }
+}
 
 /** Export */
 module.exports = helpers;
