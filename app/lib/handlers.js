@@ -491,7 +491,7 @@ handlers._checks.get = (data, callback) => {
     var id = typeof (data.queryStringObj.id) == 'string' && data.queryStringObj.id.trim().length == 20 ? data.queryStringObj.id.trim() : false;
     if (id) {
         /** Lookup the check */
-        _data.read('checks', id, (err, checkData){
+        _data.read('checks', id, (err, checkData)=>{
             if (!err && checkData) {
                 /** token from headers */
                 var token = typeof (data.headers.token) == 'string' ? data.headers.token : false;
